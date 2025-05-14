@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerInputs : MonoBehaviour
 {
     private Inputs _inputs;
-
+    
     public Action OnMovement;
 
     private void Awake()
