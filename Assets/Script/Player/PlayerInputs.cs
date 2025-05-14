@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 public class PlayerInputs : MonoBehaviour
 {
     private Inputs _inputs;
-
-    public Action<Vector2> OnMovement;
+    
+    public Action OnMovement;
 
     private void Awake()
     {
@@ -40,6 +40,7 @@ public class PlayerInputs : MonoBehaviour
     private void OnMovementInputStarted(InputAction.CallbackContext obj)
     {
         Debug.Log("Left Click");
+        OnMovement?.Invoke();
     }
 
     private void OnAutoAttackInputStarted(InputAction.CallbackContext obj)
