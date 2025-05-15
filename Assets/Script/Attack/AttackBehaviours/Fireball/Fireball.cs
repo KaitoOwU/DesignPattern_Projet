@@ -33,7 +33,7 @@ public class Fireball : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         IDamageable damageable = (IDamageable)other;
-        damageable?.GetDamage(_attackRef.Damage);
+        damageable?.Damage(_attackRef.Damage);
         StartCoroutine(DisableFireball());
     }
 

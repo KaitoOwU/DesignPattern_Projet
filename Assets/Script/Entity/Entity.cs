@@ -7,17 +7,20 @@ using UnityEngine.AI;
 public class Entity : MonoBehaviour, IDamageable, IAttackUser
 {
 
+    [SerializeField] protected List<AAttackType> _attacks;
+    [SerializeField] protected int _currentHealth;
     protected NavMeshSurface _ground;
     protected NavMeshAgent _agent;
-    [SerializeField] protected List<AAttackType> _attacks; 
-    protected int _currentHealth;
+
+    public event Action<int> OnHealthChanged;
 
     public int CurrentHealth { get => _currentHealth; }
     public List<AAttackType> Attacks { get => _attacks; } 
 
-    public void GetDamage(int damage)
+    public void Damage(int damage)
     {
         _currentHealth -= damage;
+        OnHealthChanged?.Invoke(_currentHealth);
     }
 
     protected virtual void Awake()

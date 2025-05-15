@@ -39,28 +39,23 @@ public class PlayerInputs : MonoBehaviour
     
     private void OnMovementInputStarted(InputAction.CallbackContext obj)
     {
-        Debug.Log("Left Click");
         OnMovement?.Invoke();
     }
 
     private void OnAutoAttackInputStarted(InputAction.CallbackContext obj)
     {
-        Debug.Log("Right Click");
     }
 
     private void OnAttack1InputStarted(InputAction.CallbackContext obj)
     {
-        Debug.Log("A");
     }
 
     private void OnAttack2InputStarted(InputAction.CallbackContext obj)
     {
-        Debug.Log("Z");
     }
 
     private void OnAttack3InputStarted(InputAction.CallbackContext obj)
     {
-        Debug.Log("E");
     }
     
     #endregion

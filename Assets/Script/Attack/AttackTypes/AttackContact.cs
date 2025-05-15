@@ -20,6 +20,6 @@ public class AttackContact : AAttackType
     private void OnCollisionEnter(Collision collision)
     {
         IDamageable damageable = (IDamageable)collision;
-        damageable?.GetDamage(_damage);
+        damageable?.Damage(_damage);
     }
 }

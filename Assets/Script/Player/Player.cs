@@ -17,4 +17,12 @@ public class Player : Entity
         Inputs.OnMovement += Movements.MoveToMousePosition;
         //TODO: CONNECTER LES ATTAQUES
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            this.Damage(1);
+        }
+    }
 }
