@@ -8,7 +8,7 @@ using UnityEngine.AI;
 public class Entity : MonoBehaviour, IDamageable, IAttackUser
 {
 
-    [SerializeField] protected List<AAttackType> _attacks = new (); 
+    [SerializeField] protected List<AAttackType> _attacks = new(); 
     [SerializeField] protected Transform _weaponPoint; 
     protected List<AAttackType> _instanciatedAttacks = new(); 
     protected NavMeshSurface _ground;
@@ -29,6 +29,7 @@ public class Entity : MonoBehaviour, IDamageable, IAttackUser
     public void Damage(int damage, IAttackUser attacker)
     {
         _currentHealth -= damage;
+        Debug.Log(damage);
 
         if (_currentHealth <= 0) 
         {

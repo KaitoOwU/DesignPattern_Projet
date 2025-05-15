@@ -311,7 +311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _agent: {fileID: 2755339349131118951}
   _animator: {fileID: 4017012815927045721}
-  _animatorController: {fileID: 0}
+  _animatorController: {fileID: 9100000, guid: 316a7044e3e3c43e7846c86106369fbb, type: 2}
 --- !u!1001 &4809541577718529553
 PrefabInstance:
   m_ObjectHideFlags: 0
