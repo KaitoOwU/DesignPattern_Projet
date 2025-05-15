@@ -25,6 +25,7 @@ public partial class WalkTowardsPlayerAction : Action
     protected override Status OnUpdate()
     {
         _movement.NavigateTo(_player.transform.position);
+        GameObject.transform.forward = (_player.transform.position - GameObject.transform.position).normalized;
         return _movement.DistanceApartDestination() <= Distance.Value ? Status.Success : Status.Running;
     }
 
