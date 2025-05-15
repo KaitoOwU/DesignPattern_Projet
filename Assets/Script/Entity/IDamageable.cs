@@ -2,15 +2,7 @@ using UnityEngine;
 
 public interface IDamageable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    int CurrentHealth { get; }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    void GetDamage(int damage);
 }
