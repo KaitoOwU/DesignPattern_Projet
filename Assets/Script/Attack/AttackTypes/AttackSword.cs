@@ -4,7 +4,7 @@ using UnityEngine;
 [Serializable]
 public class AttackSword : AAttackType
 {
-    protected new const string _attackID = "AttackSword";
+    public override string AttackID { get => Constants.Attack_sword_id;}
 
     [SerializeField, Range(0.5f, 5.0f)] private float _range;
 
@@ -22,10 +22,12 @@ public class AttackSword : AAttackType
         RaycastHit hit;
         if (Physics.Raycast(transform.position, (target - transform.position).normalized, out hit, _range))
         {
-            IAttackUser attackUser = (IAttackUser)hit.transform;
+            IAttackUser attackUser = hit.transform.GetComponent<IAttackUser>();
+
             if (attackUser != null && attackUser == _user)
                 return;
-            IDamageable damageable = (IDamageable)hit.transform;
+
+            IDamageable damageable = hit.transform.GetComponent<IDamageable>();
             damageable?.Damage(_damage, _user);
         }
     }

@@ -8,9 +8,9 @@ using UnityEngine.AI;
 public class Entity : MonoBehaviour, IDamageable, IAttackUser
 {
 
-    [SerializeField] protected List<AAttackType> _attacks; 
+    [SerializeField] protected List<AAttackType> _attacks = new (); 
     [SerializeField] protected Transform _weaponPoint; 
-    protected List<AAttackType> _instanciatedAttacks; 
+    protected List<AAttackType> _instanciatedAttacks = new(); 
     protected NavMeshSurface _ground;
     protected NavMeshAgent _agent;
     protected int _currentHealth;
@@ -23,7 +23,7 @@ public class Entity : MonoBehaviour, IDamageable, IAttackUser
     {
         if(_attacks.Any(a => a.AttackID == newAttack.AttackID)) return;
         _attacks.Add(newAttack);
-        _instanciatedAttacks.Add(Instantiate(newAttack.gameObject, _weaponPoint).GetComponent<AAttackType>());
+        _instanciatedAttacks.Add(Instantiate(newAttack.gameObject, Vector3.zero, Quaternion.identity, _weaponPoint).GetComponent<AAttackType>());
     }
 
     public void Damage(int damage, IAttackUser attacker)
@@ -45,6 +45,11 @@ public class Entity : MonoBehaviour, IDamageable, IAttackUser
         _ground = FindFirstObjectByType<NavMeshSurface>();
 
         foreach (AAttackType attack in _attacks)
-            attack.OnAttackInit.Invoke(this);
+        {
+            _instanciatedAttacks.Add(Instantiate(attack.gameObject, Vector3.zero, Quaternion.identity, _weaponPoint).GetComponent<AAttackType>());
+            _instanciatedAttacks[^1].transform.localPosition = Vector3.zero;
+            _instanciatedAttacks[^1].transform.position = Vector3.zero;
+            _instanciatedAttacks[^1].OnAttackInit?.Invoke(this);
+        }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 [Serializable]
 public class AttackFireball : AAttackType
 {
-    protected new const string _attackID = "AttackFireball";
+    public override string AttackID { get => Constants.Attack_fireball_id; }
 
     [SerializeField] private FireballAttackPool _fireballAttackPrefab;
     private FireballAttackPool _instantiatedFireballAttack;
@@ -28,6 +28,6 @@ public class AttackFireball : AAttackType
     protected override void InitAttack(IAttackUser user)
     {
         _user = user;
-        _instantiatedFireballAttack = Instantiate(_fireballAttackPrefab, transform.position, Quaternion.identity, transform).Init(this);
+        _instantiatedFireballAttack = Instantiate(_fireballAttackPrefab, Vector3.zero, Quaternion.identity, transform).Init(this);
     }
 }

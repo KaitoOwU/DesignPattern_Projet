@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
@@ -33,12 +34,16 @@ public class Fireball : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        IAttackUser attackUser = (IAttackUser)other;
+        IAttackUser attackUser = other.GetComponent<IAttackUser>();
         if (attackUser != null && attackUser == _attackRef.User)
             return;
-        IDamageable damageable = (IDamageable)other;
-        damageable?.Damage(_attackRef.Damage, _attackRef.User);
-        StartCoroutine(DisableFireball());
+
+        IDamageable damageable = other.GetComponent<IDamageable>();
+        if(damageable != null)
+        {
+            damageable?.Damage(_attackRef.Damage, _attackRef.User);
+            StartCoroutine(DisableFireball());
+        }
     }
 
     public void EnableFireball(Vector2 dir)

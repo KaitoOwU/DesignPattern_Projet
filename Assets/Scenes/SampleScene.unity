@@ -29591,7 +29591,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6331558144665418028, guid: 8b89fdb0c71dd438b9b7b0ef242463bc,
         type: 3}
-      insertIndex: -1
+      insertIndex: 1
       addedObject: {fileID: 164211095928399050}
     - targetCorrespondingSourceObject: {fileID: 6331558144665418028, guid: 8b89fdb0c71dd438b9b7b0ef242463bc,
         type: 3}
@@ -29630,6 +29630,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2714ea25bd9afe946a1da529f0913d0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &164211095928399048 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4970638748679642028, guid: 8b89fdb0c71dd438b9b7b0ef242463bc,
+    type: 3}
+  m_PrefabInstance: {fileID: 164211095928399044}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &164211095928399050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29642,8 +29648,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f15f558add8611e4997d8827567b5b2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attacks: []
-  _weaponPoint: {fileID: 0}
+  _attacks:
+  - {fileID: 4631717598847726698, guid: 0c9de1550d129a54f87921ed875e6780, type: 3}
+  _weaponPoint: {fileID: 164211095928399048}
   <Inputs>k__BackingField: {fileID: 164211095928399047}
   <Movements>k__BackingField: {fileID: 164211095928399053}
 --- !u!114 &164211095928399053

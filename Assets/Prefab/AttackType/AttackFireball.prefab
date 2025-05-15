@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 5367674706694251715}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.53943825, y: -2.4286547, z: 6.136085}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 10
-  _weaponPoint: {fileID: 0}
   _attackAnimator: {fileID: 0}
   _fireballAttackPrefab: {fileID: 8684682517761074072, guid: 966988151ae1dbc49b5309e219b4a53e,
     type: 3}

@@ -4,7 +4,7 @@ using UnityEngine;
 [Serializable]
 public class AttackMelee : AAttackType
 {
-    protected new const string _attackID = "AttackMelee";
+    public override string AttackID { get => Constants.Attack_melee_id; }
 
     [SerializeField] GameObject _meleeAttackPrefab;
 
