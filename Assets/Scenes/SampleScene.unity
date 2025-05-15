@@ -7692,8 +7692,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _frames:
   - {fileID: 334082108}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 606107520}
+  - {fileID: 203857132}
 --- !u!1001 &545282898
 PrefabInstance:
   m_ObjectHideFlags: 0

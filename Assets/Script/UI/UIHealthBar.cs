@@ -1,16 +1,15 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIHealthBar : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private List<Image> _hearts = new();
 
-    // Update is called once per frame
-    void Update()
+    private void Reset()
     {
-        
+        _hearts = GetComponentsInChildren<Image>().ToList();
     }
 }
