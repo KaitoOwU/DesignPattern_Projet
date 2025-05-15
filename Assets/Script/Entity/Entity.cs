@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class Entity : MonoBehaviour, IDamageable, IAttackUser
 {
 
+    [Header("Datas")]
     [SerializeField] protected List<AAttackType> _attacks;
     [SerializeField] protected int _currentHealth;
     protected NavMeshSurface _ground;

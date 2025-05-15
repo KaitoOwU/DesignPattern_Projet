@@ -20,7 +20,5 @@ public class UIHeartContainer : MonoBehaviour
     {
         _heart.DOFade(state ? 1f : 0f, .75f);
         IsActive = state;
-        
-        Debug.Log(state);
     }
 }

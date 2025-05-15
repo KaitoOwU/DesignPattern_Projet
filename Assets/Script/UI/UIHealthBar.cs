@@ -38,16 +38,7 @@ public class UIHealthBar : MonoBehaviour
 
     private void UpdateHealth(int newHealth)
     {
-        for (int i = 0; i < _hearts.Count; i++)
-        {
-            if (i < newHealth)
-            {
-                if(!_hearts[i].IsActive) _hearts[i].SetActive(true);
-            }
-            else
-            {
-                if(_hearts[i].IsActive) _hearts[i].SetActive(false);
-            }
-        }
+        if (newHealth < 0) return;
+        _hearts[newHealth].SetActive(false);
     }
 }
