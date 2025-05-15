@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class Fireball : MonoBehaviour
 {
@@ -32,8 +33,11 @@ public class Fireball : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        IAttackUser attackUser = (IAttackUser)other;
+        if (attackUser != null && attackUser == _attackRef.User)
+            return;
         IDamageable damageable = (IDamageable)other;
-        damageable?.GetDamage(_attackRef.Damage);
+        damageable?.Damage(_attackRef.Damage, _attackRef.User);
         StartCoroutine(DisableFireball());
     }
 

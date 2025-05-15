@@ -4,6 +4,8 @@ using UnityEngine;
 [Serializable]
 public class AttackMelee : AAttackType
 {
+    protected new const string _attackID = "AttackMelee";
+
     [SerializeField] GameObject _meleeAttackPrefab;
 
     private void OnEnable()
@@ -17,11 +19,11 @@ public class AttackMelee : AAttackType
 
     public override void ExecuteAttack(Vector3 target)
     {
-        throw new System.NotImplementedException();
+        _attackAnimator.SetTrigger("MeleeAttack");
     }
 
-    protected override void InitAttack()
+    protected override void InitAttack(IAttackUser user)
     {
-        throw new NotImplementedException();
+        _user = user;
     }
 }

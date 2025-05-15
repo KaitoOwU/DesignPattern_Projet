@@ -4,6 +4,10 @@ using UnityEngine;
 [Serializable]
 public class AttackSword : AAttackType
 {
+    protected new const string _attackID = "AttackSword";
+
+    [SerializeField, Range(0.5f, 5.0f)] private float _range;
+
     private void OnEnable()
     {
         OnAttackInit += InitAttack;
@@ -15,11 +19,19 @@ public class AttackSword : AAttackType
 
     public override void ExecuteAttack(Vector3 target)
     {
-        throw new System.NotImplementedException();
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, (target - transform.position).normalized, out hit, _range))
+        {
+            IAttackUser attackUser = (IAttackUser)hit.transform;
+            if (attackUser != null && attackUser == _user)
+                return;
+            IDamageable damageable = (IDamageable)hit.transform;
+            damageable?.Damage(_damage, _user);
+        }
     }
 
-    protected override void InitAttack()
+    protected override void InitAttack(IAttackUser user)
     {
-        throw new NotImplementedException();
+        _user = user;
     }
 }

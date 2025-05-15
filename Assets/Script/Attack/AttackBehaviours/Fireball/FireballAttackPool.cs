@@ -25,7 +25,7 @@ public class FireballAttackPool : MonoBehaviour
         if (fireball != null)
         {
             fireball.gameObject.SetActive(true);
-            fireball.EnableFireball(target - transform.position);
+            fireball.EnableFireball((target - transform.position).normalized);
         }
     }
 
