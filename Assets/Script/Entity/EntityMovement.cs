@@ -26,7 +26,6 @@ public class EntityMovement : MonoBehaviour
     public float DistanceApartDestination()
     {
         float dis = Vector3.Distance(this.transform.position, _agent.destination);
-        Debug.Log(dis);
         return dis;
     }
         
