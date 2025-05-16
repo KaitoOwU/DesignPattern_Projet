@@ -39,7 +39,10 @@ public class Player : Entity
 
     private void SetupAttackUI(AAttackType attack)
     {
-        MainUI.AttackFrame.AcquireAttack(_attacks.IndexOf(attack), attack);
+        if (attack.AttackID == Constants.Attack_sword_id)
+            return; //Ignore Base Attack
+        
+        MainUI.AttackFrame.AcquireAttack(attack);
     }
 
     #region Attack Setup
