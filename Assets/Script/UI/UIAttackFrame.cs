@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,18 +13,13 @@ public class UIAttackFrame : MonoBehaviour
     {
         foreach (Transform t in transform)
         {
-            _frames.Add(t.GetComponent<Image>());
+            _frames.Add(t.GetChild(0).GetComponent<Image>());
         }
     }
 
-    public void AcquireAttack(AAttackType acquiredAttack)
+    public void AcquireAttack(int index, AAttackType acquiredAttack)
     {
-        for(int i = 0; i < _frames.Count; i++)
-        {
-            if (_frames[i] == null)
-            {
-                _frames[i].sprite = acquiredAttack.AttackSprite;
-            }
-        }
+        _frames[index].sprite = acquiredAttack.AttackSprite;
+        _frames[index].DOFade(1f, 0.5f);
     }
 }

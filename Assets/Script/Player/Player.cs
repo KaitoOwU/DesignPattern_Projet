@@ -15,6 +15,12 @@ public class Player : Entity
         MainUI = FindFirstObjectByType<MainUI>();
     }
 
+    protected override void Awake()
+    {
+        base.Awake();
+        _attacks.ForEach(SetupAttackUI);
+    }
+
     private void OnEnable()
     {
         Inputs.OnMovement += Movements.MoveToMousePosition;
@@ -28,8 +34,12 @@ public class Player : Entity
     public override void AcquireAttack(AAttackType newAttack)
     {
         base.AcquireAttack(newAttack);
+        SetupAttackUI(newAttack);
+    }
 
-        MainUI.AttackFrame.AcquireAttack(newAttack);
+    private void SetupAttackUI(AAttackType attack)
+    {
+        MainUI.AttackFrame.AcquireAttack(_attacks.IndexOf(attack), attack);
     }
 
     #region Attack Setup
