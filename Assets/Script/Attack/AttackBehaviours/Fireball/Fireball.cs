@@ -30,11 +30,13 @@ public class Fireball : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        IAttackUser attackUser = other.GetComponent<IAttackUser>();
+        IAttackUser attackUser = other.GetComponentInParent<IAttackUser>();
         if (attackUser != null && attackUser == _attackRef.User)
             return;
 
-        IDamageable damageable = other.GetComponent<IDamageable>();
+        Debug.Log(other.name);
+        
+        IDamageable damageable = other.GetComponentInParent<IDamageable>();
         if(damageable != null)
         {
             damageable?.Damage(_attackRef.Damage, _attackRef.User);

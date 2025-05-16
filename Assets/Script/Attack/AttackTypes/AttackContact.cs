@@ -22,12 +22,12 @@ public class AttackContact : AAttackType
 
     private void OnTriggerEnter(Collider other)
     {
-        IAttackUser attackUser = other.GetComponent<IAttackUser>();
+        IAttackUser attackUser = other.GetComponentInParent<IAttackUser>();
 
         if (attackUser != null && attackUser == _user)
             return;
 
-        IDamageable damageable = other.GetComponent<IDamageable>();
+        IDamageable damageable = other.GetComponentInParent<IDamageable>();
         damageable?.Damage(_damage, _user);
     }
 
