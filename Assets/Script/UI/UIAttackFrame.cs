@@ -19,6 +19,8 @@ public class UIAttackFrame : MonoBehaviour
 
     public void AcquireAttack(int index, AAttackType acquiredAttack)
     {
+        if(acquiredAttack.AttackID == Constants.Attack_sword_id)
+            return; //Ignore Base Attack
         _frames[index].sprite = acquiredAttack.AttackSprite;
         _frames[index].DOFade(1f, 0.5f);
     }

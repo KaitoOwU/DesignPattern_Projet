@@ -44,6 +44,7 @@ public class Fireball : MonoBehaviour
 
     public void EnableFireball(Vector2 dir)
     {
+        _parent = transform.parent;
         _canMove = true;
         IsUsed = true;
         _moveDir = dir;
@@ -62,10 +63,11 @@ public class Fireball : MonoBehaviour
     private void DisableFireball()
     {
         _canMove = false;
-        IsUsed = false;
         _moveDir = Vector3.zero;
-        transform.SetParent(_parent, false);
         transform.position = Vector3.zero;
+        transform.SetParent(_parent, false);
+        transform.localPosition = Vector3.zero;
+        IsUsed = false;
         gameObject.SetActive(false);
     }
 }
