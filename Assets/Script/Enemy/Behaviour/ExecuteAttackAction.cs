@@ -18,7 +18,9 @@ public partial class ExecuteAttackAction : Action
         _launchEntity = GameObject.GetComponent<Entity>();
         _target = UnityEngine.Object.FindFirstObjectByType<Player>();
         
-        _launchEntity.Attacks[Random.Range(0, _launchEntity.Attacks.Count)].ExecuteAttack(_target.transform.position);
+        var newAttack = _launchEntity.Attacks[Random.Range(0, _launchEntity.Attacks.Count)]
+        if(newAttack != null)
+            newAttack.ExecuteAttack(_target.transform.position);
         
         return Status.Success;
     }

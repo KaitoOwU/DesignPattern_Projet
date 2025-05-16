@@ -53,7 +53,10 @@ public class Player : Entity
         {
             var target = GetTargetMousePosition();
             if (target != null)
+            {
                 attack.ExecuteAttack((Vector3)target);
+                Debug.Log($"Player Execute Attack : {id}");
+            }
         }
     }
 

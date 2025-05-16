@@ -29,7 +29,7 @@ public class Entity : MonoBehaviour, IDamageable, IAttackUser
     public void Damage(int damage, IAttackUser attacker)
     {
         _currentHealth -= damage;
-        Debug.Log(damage);
+        Debug.Log($"Damage {damage}");
 
         if (_currentHealth <= 0) 
         {
@@ -47,9 +47,9 @@ public class Entity : MonoBehaviour, IDamageable, IAttackUser
 
         foreach (AAttackType attack in _attacks)
         {
-            _instanciatedAttacks.Add(Instantiate(attack.gameObject, Vector3.zero, Quaternion.identity, _weaponPoint).GetComponent<AAttackType>());
-            _instanciatedAttacks[^1].transform.localPosition = Vector3.zero;
-            _instanciatedAttacks[^1].transform.position = Vector3.zero;
+            if(attack == null) continue;
+            _instanciatedAttacks.Add(Instantiate(attack.gameObject, Vector3.zero, Quaternion.identity).GetComponent<AAttackType>());
+            _instanciatedAttacks[^1].transform.SetParent(WeaponPoint.transform, false);
             _instanciatedAttacks[^1].OnAttackInit?.Invoke(this);
         }
     }

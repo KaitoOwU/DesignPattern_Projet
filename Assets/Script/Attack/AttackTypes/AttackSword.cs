@@ -22,6 +22,7 @@ public class AttackSword : AAttackType
         RaycastHit hit;
         if (Physics.Raycast(transform.position, (target - transform.position).normalized, out hit, _range))
         {
+            Debug.DrawRay(transform.position, (target - transform.position).normalized * _range, Color.magenta, 3);
             IAttackUser attackUser = hit.transform.GetComponent<IAttackUser>();
 
             if (attackUser != null && attackUser == _user)
