@@ -7,10 +7,10 @@ using static UnityEngine.UIElements.UxmlAttributeDescription;
 public class Fireball : MonoBehaviour
 {
     public bool IsUsed {  get; private set; }
-    [SerializeField] private float _speed;
-    private Animator _animator;
+    [SerializeField] private float _speed = 10;
+    [SerializeField] private float _maxLifeTime = 4;
     private AAttackType _attackRef;
-    private bool _isMoving;
+    private bool _canMove;
     private Vector3 _moveDir = Vector3.zero;
     private Transform _parent;
 
@@ -20,14 +20,9 @@ public class Fireball : MonoBehaviour
         return this;
     }
 
-    private void Start()
-    {
-        _animator = GetComponent<Animator>();
-    }
-
     private void Update()
     {
-        if (_isMoving)
+        if (_canMove)
         {
             transform.Translate(_moveDir * Time.deltaTime * _speed);
         }
@@ -43,28 +38,34 @@ public class Fireball : MonoBehaviour
         if(damageable != null)
         {
             damageable?.Damage(_attackRef.Damage, _attackRef.User);
-            StartCoroutine(DisableFireball());
+            DisableFireball();
         }
     }
 
     public void EnableFireball(Vector2 dir)
     {
+        _canMove = true;
         IsUsed = true;
         _moveDir = dir;
-        transform.SetParent(null, false);
+        transform.SetParent(null, true);
+        StartCoroutine(WaitForStop());
     }
 
-    IEnumerator DisableFireball()
+    IEnumerator WaitForStop()
     {
-        _isMoving = false;
-        if (_animator != null)
-            _animator.SetTrigger("Explode");
-        yield return new WaitForSeconds(_animator.GetCurrentAnimatorClipInfo(0).Length);
+        yield return new WaitForSeconds(_maxLifeTime);
+        if (IsUsed)
+            DisableFireball();
+    }
+
+
+    private void DisableFireball()
+    {
+        _canMove = false;
         IsUsed = false;
         _moveDir = Vector3.zero;
         transform.SetParent(_parent, false);
         transform.position = Vector3.zero;
         gameObject.SetActive(false);
-
     }
 }

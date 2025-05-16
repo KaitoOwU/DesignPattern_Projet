@@ -30,6 +30,7 @@ public class AttackFireball : AAttackType
     protected override void InitAttack(IAttackUser user)
     {
         _user = user;
-        _instantiatedFireballAttack = Instantiate(_fireballAttackPrefab, Vector3.zero, Quaternion.identity, transform).Init(this);
+        _instantiatedFireballAttack = Instantiate(_fireballAttackPrefab, Vector3.zero, Quaternion.identity).Init(this);
+        _instantiatedFireballAttack.transform.SetParent(transform, false);
     }
 }

@@ -29165,9 +29165,20 @@ PrefabInstance:
       objectReference: {fileID: 164211095928399056}
     - target: {fileID: 8875293755711756830, guid: 8b89fdb0c71dd438b9b7b0ef242463bc,
         type: 3}
+      propertyPath: _attacks.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8875293755711756830, guid: 8b89fdb0c71dd438b9b7b0ef242463bc,
+        type: 3}
       propertyPath: '_attacks.Array.data[0]'
       value: 
       objectReference: {fileID: 6985232805683696013, guid: 6610366f17d59fe4bb00b1fd9c461dcc,
+        type: 3}
+    - target: {fileID: 8875293755711756830, guid: 8b89fdb0c71dd438b9b7b0ef242463bc,
+        type: 3}
+      propertyPath: '_attacks.Array.data[1]'
+      value: 
+      objectReference: {fileID: 4631717598847726698, guid: 0c9de1550d129a54f87921ed875e6780,
         type: 3}
     - target: {fileID: 8875293755711756830, guid: 8b89fdb0c71dd438b9b7b0ef242463bc,
         type: 3}
