@@ -31,6 +31,22 @@ public class EntityAnimation : MonoBehaviour
     {
         _animator.SetFloat(WALK_SPEED, _agent.velocity.magnitude);
     }
+    
+    public void PlayAnimation(IAttackAnimationType animationType)
+    {
+        switch (animationType)
+        {
+            default:
+            case IAttackAnimationType.NONE:
+                break;
+            case IAttackAnimationType.SWORD_SLASH:
+                _animator.Play(EntityAnimation.ANIM_SLASH);
+                break;
+            case IAttackAnimationType.SPELL_CAST:
+                _animator.Play(EntityAnimation.ANIM_SPELL);
+                break;
+        }
+    }
 }
 
 public enum IAttackAnimationType
