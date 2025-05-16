@@ -24,7 +24,8 @@ public class Fireball : MonoBehaviour
     {
         if (_canMove)
         {
-            transform.Translate(_moveDir * Time.deltaTime * _speed);
+            //transform.Translate(_moveDir * Time.deltaTime * _speed);
+            transform.position += _moveDir * (Time.deltaTime * _speed);
         }
     }
 
@@ -42,7 +43,7 @@ public class Fireball : MonoBehaviour
         }
     }
 
-    public void EnableFireball(Vector2 dir)
+    public void EnableFireball(Vector3 dir)
     {
         _parent = transform.parent;
         _canMove = true;
