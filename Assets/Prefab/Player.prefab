@@ -218,9 +218,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2221839628788110084}
+  - component: {fileID: 8875293755711756830}
   - component: {fileID: 2755339349131118951}
   - component: {fileID: 9115170152858762924}
   - component: {fileID: 4038116035076336435}
+  - component: {fileID: 7540755736683620637}
+  - component: {fileID: 8001302317479559173}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -248,6 +251,25 @@ Transform:
   - {fileID: 4970638748679642028}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8875293755711756830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6331558144665418028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15f558add8611e4997d8827567b5b2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _entityAnimation: {fileID: 0}
+  _attacks:
+  - {fileID: 6898602600998938172, guid: 26e8e59811d64314da417b5ab31c58a8, type: 3}
+  _weaponPoint: {fileID: 4970638748679642028}
+  _currentHealth: 30
+  <Inputs>k__BackingField: {fileID: 7540755736683620637}
+  <Movements>k__BackingField: {fileID: 8001302317479559173}
 --- !u!195 &2755339349131118951
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -312,6 +334,30 @@ MonoBehaviour:
   _agent: {fileID: 2755339349131118951}
   _animator: {fileID: 4017012815927045721}
   _animatorController: {fileID: 9100000, guid: 316a7044e3e3c43e7846c86106369fbb, type: 2}
+--- !u!114 &7540755736683620637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6331558144665418028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2714ea25bd9afe946a1da529f0913d0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8001302317479559173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6331558144665418028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8407719ec167e7449bdf9aeef653b25d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4809541577718529553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -453,7 +499,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 316a7044e3e3c43e7846c86106369fbb, type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

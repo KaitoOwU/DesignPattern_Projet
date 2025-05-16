@@ -10,12 +10,12 @@ public class Entity : MonoBehaviour, IDamageable, IAttackUser
 
     [SerializeField] protected EntityAnimation _entityAnimation;
     [SerializeField] protected List<AAttackType> _attacks = new(); 
-    [SerializeField] protected Transform _weaponPoint; 
+    [SerializeField] protected Transform _weaponPoint;
+    [SerializeField] protected int _currentHealth = 5;
     
     protected List<AAttackType> _instanciatedAttacks = new(); 
     protected NavMeshSurface _ground;
     protected NavMeshAgent _agent;
-    protected int _currentHealth;
 
     public List<AAttackType> Attacks => _attacks; 
     public Transform WeaponPoint => _weaponPoint;
@@ -44,6 +44,7 @@ public class Entity : MonoBehaviour, IDamageable, IAttackUser
             { 
                 attacker.AcquireAttack(attack);
             }
+            Destroy(gameObject, 1);
         }
     }
 

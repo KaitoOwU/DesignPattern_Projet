@@ -22,6 +22,7 @@ public class AttackMelee : AAttackType
     public override void ExecuteAttack(Vector3 target)
     {
         OnAttackExecuted?.Invoke(IAttackAnimationType.SWORD_SLASH);
+        _attackAnimator.SetTrigger("Attack");
     }
 
     private void OnTriggerAttack(Collider other)

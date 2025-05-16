@@ -41,7 +41,7 @@ PrefabInstance:
     - target: {fileID: 1979136645898436435, guid: b8e63e1fcdad9425f9577e9775d324fc,
         type: 3}
       propertyPath: m_Name
-      value: MinionSword Variant
+      value: MinionSword
       objectReference: {fileID: 0}
     - target: {fileID: 1979136645898436435, guid: b8e63e1fcdad9425f9577e9775d324fc,
         type: 3}
@@ -124,7 +124,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3999786325976390753, guid: b8e63e1fcdad9425f9577e9775d324fc, type: 3}
+    - {fileID: 2567947673333761658, guid: b8e63e1fcdad9425f9577e9775d324fc, type: 3}
+    - {fileID: 2598398584067764066, guid: b8e63e1fcdad9425f9577e9775d324fc, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

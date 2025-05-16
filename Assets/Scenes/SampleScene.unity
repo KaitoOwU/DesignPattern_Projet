@@ -28941,8 +28941,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f15f558add8611e4997d8827567b5b2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _entityAnimation: {fileID: 0}
   _attacks:
-  - {fileID: 6985232805683696013, guid: 6610366f17d59fe4bb00b1fd9c461dcc, type: 3}
+  - {fileID: 6898602600998938172, guid: 26e8e59811d64314da417b5ab31c58a8, type: 3}
   _weaponPoint: {fileID: 164211095928399048}
   <Inputs>k__BackingField: {fileID: 164211095928399047}
   <Movements>k__BackingField: {fileID: 164211095928399053}
