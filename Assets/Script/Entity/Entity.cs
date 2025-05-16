@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.AI.Navigation;
@@ -33,13 +34,14 @@ public class Entity : MonoBehaviour, IDamageable, IAttackUser
     {
         if(_attacks.Any(a => a.AttackID == newAttack.AttackID)) return;
         _attacks.Add(newAttack);
-        _instanciatedAttacks.Add(Instantiate(newAttack.gameObject, Vector3.zero, Quaternion.identity, _weaponPoint).GetComponent<AAttackType>());
+        _instanciatedAttacks.Add(Instantiate(newAttack.gameObject, Vector3.zero, Quaternion.identity).GetComponent<AAttackType>());
+        _instanciatedAttacks[^1].transform.SetParent(WeaponPoint.transform, false);
+        _instanciatedAttacks[^1].OnAttackInit?.Invoke(this);
     }
 
     public void Damage(int damage, IAttackUser attacker)
     {
         _currentHealth -= damage;
-        Debug.Log($"Damage {damage}");
 
         if (_currentHealth <= 0) 
         {

@@ -154,6 +154,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2755339349131118951, guid: 8b89fdb0c71dd438b9b7b0ef242463bc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4038116035076336435, guid: 8b89fdb0c71dd438b9b7b0ef242463bc,
         type: 3}
       propertyPath: _animator
@@ -250,7 +255,7 @@ MonoBehaviour:
   _attacks:
   - {fileID: 4631717598847726698, guid: 0c9de1550d129a54f87921ed875e6780, type: 3}
   _weaponPoint: {fileID: 599604674192940499}
-  _currentHealth: 0
+  _currentHealth: 5
 --- !u!114 &4808872179935925359
 MonoBehaviour:
   m_ObjectHideFlags: 0
