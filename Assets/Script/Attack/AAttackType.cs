@@ -6,8 +6,10 @@ public abstract class AAttackType : MonoBehaviour
 {
     [SerializeField] protected int _damage;
     [SerializeField] protected Animator _attackAnimator;
+    [SerializeField] protected Sprite _attackSprite;
 
     protected IAttackUser _user;
+    public Sprite AttackSprite => _attackSprite;
     
     public Action<IAttackUser> OnAttackInit;
     public Action<IAttackAnimationType> OnAttackExecuted;

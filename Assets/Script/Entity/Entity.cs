@@ -9,7 +9,6 @@ public class Entity : MonoBehaviour, IDamageable, IAttackUser
 {
 
     [Header("Datas")]
-    [SerializeField] protected List<AAttackType> _attacks;
     [SerializeField] protected int _currentHealth;
     [SerializeField] protected EntityAnimation _entityAnimation;
     [SerializeField] protected List<AAttackType> _attacks = new(); 
@@ -18,7 +17,6 @@ public class Entity : MonoBehaviour, IDamageable, IAttackUser
     protected List<AAttackType> _instanciatedAttacks = new(); 
     protected NavMeshSurface _ground;
     protected NavMeshAgent _agent;
-    protected int _currentHealth;
 
     public event Action<int> OnHealthChanged;
 
@@ -27,12 +25,11 @@ public class Entity : MonoBehaviour, IDamageable, IAttackUser
     public int CurrentHealth => _currentHealth;
 
     private void Reset()
-    public void Damage(int damage)
     {
         _entityAnimation = GetComponent<EntityAnimation>();
     }
 
-    public void AcquireAttack(AAttackType newAttack)
+    public virtual void AcquireAttack(AAttackType newAttack)
     {
         if(_attacks.Any(a => a.AttackID == newAttack.AttackID)) return;
         _attacks.Add(newAttack);
