@@ -198,6 +198,9 @@ PrefabInstance:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
+    - {fileID: 8875293755711756830, guid: 8b89fdb0c71dd438b9b7b0ef242463bc, type: 3}
+    - {fileID: 7540755736683620637, guid: 8b89fdb0c71dd438b9b7b0ef242463bc, type: 3}
+    - {fileID: 8001302317479559173, guid: 8b89fdb0c71dd438b9b7b0ef242463bc, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6944734866117476437, guid: 8b89fdb0c71dd438b9b7b0ef242463bc, type: 3}
     m_AddedGameObjects:
@@ -243,11 +246,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c20bd040fb2cc9a4380296cde94acfc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentHealth: 0
   _entityAnimation: {fileID: 8404629493346479436}
   _attacks:
   - {fileID: 4631717598847726698, guid: 0c9de1550d129a54f87921ed875e6780, type: 3}
   _weaponPoint: {fileID: 599604674192940499}
+  _currentHealth: 0
 --- !u!114 &4808872179935925359
 MonoBehaviour:
   m_ObjectHideFlags: 0
