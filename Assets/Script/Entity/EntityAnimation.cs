@@ -47,6 +47,11 @@ public class EntityAnimation : MonoBehaviour
                 break;
         }
     }
+
+    public void PlayAnimation(int animationHash)
+    {
+        _animator.Play(animationHash);
+    }
 }
 
 public enum IAttackAnimationType

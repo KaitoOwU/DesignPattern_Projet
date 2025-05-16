@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
@@ -39,6 +40,13 @@ public class Entity : MonoBehaviour, IDamageable, IAttackUser
         _instanciatedAttacks[^1].OnAttackInit?.Invoke(this);
     }
 
+    protected virtual void Die()
+    {
+        Destroy(gameObject, 2);
+        transform.DOScale(0f, 2f).SetEase(Ease.InQuart);
+        _entityAnimation.PlayAnimation(Animator.StringToHash("Death"));
+    }
+
     public void Damage(int damage, IAttackUser attacker)
     {
         _currentHealth -= damage;
@@ -49,7 +57,7 @@ public class Entity : MonoBehaviour, IDamageable, IAttackUser
             { 
                 attacker.AcquireAttack(attack);
             }
-            Destroy(gameObject, 1);
+            Die();
         }
         OnHealthChanged?.Invoke(_currentHealth);
     }
