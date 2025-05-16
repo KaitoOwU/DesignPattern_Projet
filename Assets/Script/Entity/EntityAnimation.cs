@@ -5,12 +5,16 @@ using UnityEngine.AI;
 
 public class EntityAnimation : MonoBehaviour
 {
-    private static readonly int WALK_SPEED = Animator.StringToHash("WalkSpeed");
+    public static readonly int WALK_SPEED = Animator.StringToHash("WalkSpeed");
+    public static readonly int ANIM_SLASH = Animator.StringToHash("1H_Melee_Attack_Slice_Horizontal");
+    public static readonly int ANIM_SPELL = Animator.StringToHash("Spellcast_Shoot");
     
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private Animator _animator;
 
     [SerializeField] private AnimatorController _animatorController;
+
+    public Animator Animator => _animator;
 
     private void Reset()
     {
@@ -27,4 +31,11 @@ public class EntityAnimation : MonoBehaviour
     {
         _animator.SetFloat(WALK_SPEED, _agent.velocity.magnitude);
     }
+}
+
+public enum IAttackAnimationType
+{
+    NONE,
+    SWORD_SLASH,
+    SPELL_CAST
 }

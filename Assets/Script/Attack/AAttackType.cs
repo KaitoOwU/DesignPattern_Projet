@@ -10,6 +10,7 @@ public abstract class AAttackType : MonoBehaviour
     protected IAttackUser _user;
     
     public Action<IAttackUser> OnAttackInit;
+    public Action<IAttackAnimationType> OnAttackExecuted;
 
     public abstract string AttackID { get;}
     public int Damage => _damage;

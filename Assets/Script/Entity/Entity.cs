@@ -8,8 +8,10 @@ using UnityEngine.AI;
 public class Entity : MonoBehaviour, IDamageable, IAttackUser
 {
 
+    [SerializeField] protected EntityAnimation _entityAnimation;
     [SerializeField] protected List<AAttackType> _attacks = new(); 
     [SerializeField] protected Transform _weaponPoint; 
+    
     protected List<AAttackType> _instanciatedAttacks = new(); 
     protected NavMeshSurface _ground;
     protected NavMeshAgent _agent;
@@ -17,7 +19,12 @@ public class Entity : MonoBehaviour, IDamageable, IAttackUser
 
     public List<AAttackType> Attacks => _attacks; 
     public Transform WeaponPoint => _weaponPoint;
-    public int CurrentHealth => _currentHealth; 
+    public int CurrentHealth => _currentHealth;
+
+    private void Reset()
+    {
+        _entityAnimation = GetComponent<EntityAnimation>();
+    }
 
     public void AcquireAttack(AAttackType newAttack)
     {
@@ -51,6 +58,27 @@ public class Entity : MonoBehaviour, IDamageable, IAttackUser
             _instanciatedAttacks.Add(Instantiate(attack.gameObject, Vector3.zero, Quaternion.identity).GetComponent<AAttackType>());
             _instanciatedAttacks[^1].transform.SetParent(WeaponPoint.transform, false);
             _instanciatedAttacks[^1].OnAttackInit?.Invoke(this);
+        }
+        
+        _attacks.ForEach(attack =>
+        {
+            attack.OnAttackExecuted += PlayAnimation;
+        });
+    }
+
+    private void PlayAnimation(IAttackAnimationType animationType)
+    {
+        switch (animationType)
+        {
+            default:
+            case IAttackAnimationType.NONE:
+                break;
+            case IAttackAnimationType.SWORD_SLASH:
+                _entityAnimation.Animator.Play(EntityAnimation.ANIM_SLASH);
+                break;
+            case IAttackAnimationType.SPELL_CAST:
+                _entityAnimation.Animator.Play(EntityAnimation.ANIM_SPELL);
+                break;
         }
     }
 }

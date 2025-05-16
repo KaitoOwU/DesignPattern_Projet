@@ -19,6 +19,8 @@ public class AttackSword : AAttackType
 
     public override void ExecuteAttack(Vector3 target)
     {
+        OnAttackExecuted?.Invoke(IAttackAnimationType.SWORD_SLASH);
+        
         RaycastHit hit;
         if (Physics.Raycast(transform.position, (target - transform.position).normalized, out hit, _range))
         {
