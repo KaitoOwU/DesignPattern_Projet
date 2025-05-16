@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 1
   _attackAnimator: {fileID: 0}
+  _attackSprite: {fileID: 21300000, guid: 1667955fff4e1a141a5a99428fc35767, type: 3}
 --- !u!136 &4168305849431855833
 CapsuleCollider:
   m_ObjectHideFlags: 0
