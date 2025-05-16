@@ -72,4 +72,12 @@ public class Entity : MonoBehaviour, IDamageable, IAttackUser
             attack.OnAttackExecuted += _entityAnimation.PlayAnimation;
         });
     }
+
+    private void OnDestroy()
+    {
+        _attacks.ForEach(attack =>
+        {
+            attack.OnAttackExecuted -= _entityAnimation.PlayAnimation;
+        });
+    }
 }
