@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 public class Player : Entity
@@ -15,14 +16,58 @@ public class Player : Entity
     private void OnEnable()
     {
         Inputs.OnMovement += Movements.MoveToMousePosition;
-        //TODO: CONNECTER LES ATTAQUES
+        
+        Inputs.OnAutoAttack += AutoAttack;
+        Inputs.OnSpecialAttack1 += SpecialAttack1;
+        Inputs.OnSpecialAttack2 += SpecialAttack2;
+        Inputs.OnSpecialAttack3 += SpecialAttack3;
     }
 
-    private void Update()
+#region Attack Setup
+
+    private void AutoAttack()
     {
-        if (Input.GetKeyDown(KeyCode.J))
+        ExecuteAttackByID(Constants.Attack_sword_id);
+    }    
+
+    private void SpecialAttack1()
+    {
+        ExecuteAttackByID(Constants.Attack_melee_id);
+    }
+
+    private void SpecialAttack2()
+    {
+        ExecuteAttackByID(Constants.Attack_fireball_id);
+    }
+
+    private void SpecialAttack3()
+    {
+        ExecuteAttackByID(Constants.Attack_contact_id);
+    }
+
+    private void ExecuteAttackByID(string id)
+    {
+        var attack = _instanciatedAttacks.FirstOrDefault(x => x.AttackID == id);
+
+        if (attack != null)
         {
-            this.Damage(1);
+            var target = GetTargetMousePosition();
+            if (target != null)
+                attack.ExecuteAttack((Vector3)target);
         }
     }
+
+    private Vector3? GetTargetMousePosition()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            return hit.point;
+        }
+        return null;
+    }
+#endregion
+
 }

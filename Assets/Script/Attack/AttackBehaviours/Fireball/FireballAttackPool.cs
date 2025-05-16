@@ -7,12 +7,12 @@ public class FireballAttackPool : MonoBehaviour
     [SerializeField] private Fireball _fireballPrefab;
     [SerializeField, Range(3,15)] private int _poolSize;
     [SerializeField] private Transform _poolParent;
-    private List<Fireball> _fireballPool;
+    private List<Fireball> _fireballPool = new();
 
     public FireballAttackPool Init(AAttackType attackRef)
     {
         for (int i = 0; i < _poolSize; i++) {
-            Fireball fireball = Instantiate(_fireballPrefab, _poolParent.position, Quaternion.identity, _poolParent).Init(attackRef);
+            Fireball fireball = Instantiate(_fireballPrefab, Vector3.zero, Quaternion.identity, _poolParent).Init(attackRef);
             fireball.gameObject.SetActive(false);
             _fireballPool.Add(fireball);
         }
@@ -25,7 +25,7 @@ public class FireballAttackPool : MonoBehaviour
         if (fireball != null)
         {
             fireball.gameObject.SetActive(true);
-            fireball.EnableFireball(target - transform.position);
+            fireball.EnableFireball((target - transform.position).normalized);
         }
     }
 

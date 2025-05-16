@@ -4,6 +4,8 @@ using UnityEngine;
 [Serializable]
 public class AttackContact : AAttackType
 {
+    public override string AttackID { get => Constants.Attack_contact_id; }
+
     private void OnEnable()
     {
         OnAttackInit += InitAttack;
@@ -13,13 +15,24 @@ public class AttackContact : AAttackType
         OnAttackInit -= InitAttack;
     }
 
-    public override void ExecuteAttack(Vector3 target) {}
-
-    protected override void InitAttack(){}
-
-    private void OnCollisionEnter(Collision collision)
+    public override void ExecuteAttack(Vector3 target)
     {
-        IDamageable damageable = (IDamageable)collision;
-        damageable?.Damage(_damage);
+        OnAttackExecuted?.Invoke(IAttackAnimationType.NONE);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        IAttackUser attackUser = other.GetComponent<IAttackUser>();
+
+        if (attackUser != null && attackUser == _user)
+            return;
+
+        IDamageable damageable = other.GetComponent<IDamageable>();
+        damageable?.Damage(_damage, _user);
+    }
+
+    protected override void InitAttack(IAttackUser user)
+    {
+        _user = user;
     }
 }

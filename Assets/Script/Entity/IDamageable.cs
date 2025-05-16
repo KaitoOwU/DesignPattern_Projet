@@ -4,5 +4,5 @@ public interface IDamageable
 {
     int CurrentHealth { get; }
 
-    void Damage(int damage);
+    void Damage(int damage, IAttackUser attacker);
 }

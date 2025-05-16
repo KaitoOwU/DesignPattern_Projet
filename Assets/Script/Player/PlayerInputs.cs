@@ -8,6 +8,15 @@ public class PlayerInputs : MonoBehaviour
     
     public Action OnMovement;
 
+#region Attack Actions
+
+    public Action OnAutoAttack;
+    public Action OnSpecialAttack1;
+    public Action OnSpecialAttack2;
+    public Action OnSpecialAttack3;
+
+#endregion
+
     private void Awake()
     {
         _inputs = new();
@@ -44,18 +53,26 @@ public class PlayerInputs : MonoBehaviour
 
     private void OnAutoAttackInputStarted(InputAction.CallbackContext obj)
     {
+        Debug.Log("Right Click");
+        OnAutoAttack?.Invoke();
     }
 
     private void OnAttack1InputStarted(InputAction.CallbackContext obj)
     {
+        Debug.Log("A");
+        OnSpecialAttack1?.Invoke();
     }
 
     private void OnAttack2InputStarted(InputAction.CallbackContext obj)
     {
+        Debug.Log("Z");
+        OnSpecialAttack2?.Invoke();
     }
 
     private void OnAttack3InputStarted(InputAction.CallbackContext obj)
     {
+        Debug.Log("E");
+        OnSpecialAttack3?.Invoke();
     }
     
     #endregion
