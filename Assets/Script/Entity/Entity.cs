@@ -9,7 +9,6 @@ public class Entity : MonoBehaviour, IDamageable, IAttackUser
 {
 
     [Header("Datas")]
-    [SerializeField] protected int _currentHealth;
     [SerializeField] protected EntityAnimation _entityAnimation;
     [SerializeField] protected List<AAttackType> _attacks = new(); 
     [SerializeField] protected Transform _weaponPoint;
