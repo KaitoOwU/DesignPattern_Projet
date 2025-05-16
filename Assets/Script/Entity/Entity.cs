@@ -8,6 +8,8 @@ using UnityEngine.AI;
 public class Entity : MonoBehaviour, IDamageable, IAttackUser
 {
 
+    [Header("Datas")]
+    [SerializeField] protected int _currentHealth;
     [SerializeField] protected EntityAnimation _entityAnimation;
     [SerializeField] protected List<AAttackType> _attacks = new(); 
     [SerializeField] protected Transform _weaponPoint;
@@ -16,6 +18,8 @@ public class Entity : MonoBehaviour, IDamageable, IAttackUser
     protected List<AAttackType> _instanciatedAttacks = new(); 
     protected NavMeshSurface _ground;
     protected NavMeshAgent _agent;
+
+    public event Action<int> OnHealthChanged;
 
     public List<AAttackType> Attacks => _attacks; 
     public Transform WeaponPoint => _weaponPoint;
@@ -26,7 +30,7 @@ public class Entity : MonoBehaviour, IDamageable, IAttackUser
         _entityAnimation = GetComponent<EntityAnimation>();
     }
 
-    public void AcquireAttack(AAttackType newAttack)
+    public virtual void AcquireAttack(AAttackType newAttack)
     {
         if(_attacks.Any(a => a.AttackID == newAttack.AttackID)) return;
         _attacks.Add(newAttack);
@@ -46,6 +50,7 @@ public class Entity : MonoBehaviour, IDamageable, IAttackUser
             }
             Destroy(gameObject, 1);
         }
+        OnHealthChanged?.Invoke(_currentHealth);
     }
 
     protected virtual void Awake()

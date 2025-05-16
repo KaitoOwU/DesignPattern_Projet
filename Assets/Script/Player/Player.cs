@@ -6,11 +6,19 @@ public class Player : Entity
 {
     [field:SerializeField] public PlayerInputs Inputs { get; private set; }
     [field:SerializeField] public PlayerMovement Movements { get; private set; }
+    [field:SerializeField] public MainUI MainUI { get; private set; }
 
     private void Reset()
     {
         Inputs = GetComponent<PlayerInputs>();
         Movements = GetComponent<PlayerMovement>();
+        MainUI = FindFirstObjectByType<MainUI>();
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        _attacks.ForEach(SetupAttackUI);
     }
 
     private void OnEnable()
@@ -23,7 +31,18 @@ public class Player : Entity
         Inputs.OnSpecialAttack3 += SpecialAttack3;
     }
 
-#region Attack Setup
+    public override void AcquireAttack(AAttackType newAttack)
+    {
+        base.AcquireAttack(newAttack);
+        SetupAttackUI(newAttack);
+    }
+
+    private void SetupAttackUI(AAttackType attack)
+    {
+        MainUI.AttackFrame.AcquireAttack(_attacks.IndexOf(attack), attack);
+    }
+
+    #region Attack Setup
 
     private void AutoAttack()
     {

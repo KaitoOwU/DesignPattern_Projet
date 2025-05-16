@@ -48,7 +48,6 @@ public class PlayerInputs : MonoBehaviour
     
     private void OnMovementInputStarted(InputAction.CallbackContext obj)
     {
-        Debug.Log("Left Click");
         OnMovement?.Invoke();
     }
 
