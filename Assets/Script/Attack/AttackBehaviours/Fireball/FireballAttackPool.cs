@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +13,8 @@ public class FireballAttackPool : MonoBehaviour
     public FireballAttackPool Init(AAttackType attackRef)
     {
         for (int i = 0; i < _poolSize; i++) {
-            Fireball fireball = Instantiate(_fireballPrefab, Vector3.zero, Quaternion.identity, _poolParent).Init(attackRef);
+            Fireball fireball = Instantiate(_fireballPrefab, Vector3.zero, Quaternion.identity).Init(attackRef);
+            fireball.transform.SetParent(_poolParent, false);
             fireball.gameObject.SetActive(false);
             _fireballPool.Add(fireball);
         }

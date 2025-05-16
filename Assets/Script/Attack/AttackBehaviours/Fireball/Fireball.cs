@@ -12,6 +12,7 @@ public class Fireball : MonoBehaviour
     private AAttackType _attackRef;
     private bool _isMoving;
     private Vector3 _moveDir = Vector3.zero;
+    private Transform _parent;
 
     public Fireball Init(AAttackType attackRef)
     {
@@ -50,6 +51,7 @@ public class Fireball : MonoBehaviour
     {
         IsUsed = true;
         _moveDir = dir;
+        transform.SetParent(null, false);
     }
 
     IEnumerator DisableFireball()
@@ -60,7 +62,9 @@ public class Fireball : MonoBehaviour
         yield return new WaitForSeconds(_animator.GetCurrentAnimatorClipInfo(0).Length);
         IsUsed = false;
         _moveDir = Vector3.zero;
-        transform.position = transform.parent.position;
+        transform.SetParent(_parent, false);
+        transform.position = Vector3.zero;
         gameObject.SetActive(false);
+
     }
 }
