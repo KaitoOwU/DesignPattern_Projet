@@ -15,7 +15,10 @@ public class AttackContact : AAttackType
         OnAttackInit -= InitAttack;
     }
 
-    public override void ExecuteAttack(Vector3 target) {}
+    public override void ExecuteAttack(Vector3 target)
+    {
+        OnAttackExecuted?.Invoke(IAttackAnimationType.NONE);
+    }
 
     private void OnTriggerEnter(Collider other)
     {

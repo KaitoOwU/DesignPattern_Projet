@@ -21,6 +21,8 @@ public class AttackFireball : AAttackType
 
     public override void ExecuteAttack(Vector3 target)
     {
+        OnAttackExecuted?.Invoke(IAttackAnimationType.SPELL_CAST);
+        
         if(_instantiatedFireballAttack != null) 
             _instantiatedFireballAttack.LaunchFireball(target);
     }

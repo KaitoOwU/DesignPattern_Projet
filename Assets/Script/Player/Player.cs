@@ -16,8 +16,8 @@ public class Player : Entity
     private void OnEnable()
     {
         Inputs.OnMovement += Movements.MoveToMousePosition;
+        
         Inputs.OnAutoAttack += AutoAttack;
-
         Inputs.OnSpecialAttack1 += SpecialAttack1;
         Inputs.OnSpecialAttack2 += SpecialAttack2;
         Inputs.OnSpecialAttack3 += SpecialAttack3;
